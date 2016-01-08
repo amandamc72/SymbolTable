@@ -1,0 +1,17 @@
+	.ORIG x3000
+	LD R2, Zero
+	LD R0, M0
+	LD R1, M1
+; begin multiply
+Loop 	BRz Done
+	ADD R2, R2, R0
+	ADD R1, R1, #-1
+	BR Loop
+; end multiply
+Done 	ST R2, Result
+	HALT
+Result 	.FILL x0000
+Zero 	.FILL x0000
+M0 		.FILL x0007
+M1 		.FILL x0003
+	.END
